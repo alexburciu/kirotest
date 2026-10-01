@@ -3,11 +3,13 @@
 // ---------------------------------------------------------------------------
 
 export class ApiClientError extends Error {
+  readonly status: number;
   constructor(
-    public readonly status: number,
+    status: number,
     message: string,
   ) {
     super(message);
+    this.status = status;
     this.name = "ApiClientError";
     // Restore prototype chain for instanceof checks across compilation targets
     Object.setPrototypeOf(this, new.target.prototype);
@@ -16,12 +18,14 @@ export class ApiClientError extends Error {
 
 /** Thrown for HTTP 4xx responses. */
 export class ApiError4xx extends ApiClientError {
+  readonly body: unknown;
   constructor(
     status: number,
     message: string,
-    public readonly body: unknown,
+    body: unknown,
   ) {
     super(status, message);
+    this.body = body;
     this.name = "ApiError4xx";
     Object.setPrototypeOf(this, new.target.prototype);
   }

@@ -22,7 +22,7 @@ export const DelayStepSchema = z
       ctx.addIssue({
         code: z.ZodIssueCode.too_big,
         maximum: 365,
-        type: "number",
+        origin: "number",
         inclusive: true,
         message: "Delay in days must not exceed 365.",
         path: ["delayAmount"],
@@ -32,7 +32,7 @@ export const DelayStepSchema = z
       ctx.addIssue({
         code: z.ZodIssueCode.too_big,
         maximum: 8760,
-        type: "number",
+        origin: "number",
         inclusive: true,
         message: "Delay in hours must not exceed 8760 (365 days).",
         path: ["delayAmount"],
