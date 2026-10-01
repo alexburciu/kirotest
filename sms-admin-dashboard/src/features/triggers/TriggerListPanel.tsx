@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TriggerDefinition } from "@/types";
+import type { TriggerDefinition } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
